@@ -11,14 +11,12 @@ import com.home24.databinding.ItemArticleBinding
 import com.home24.infrastructure.extensions.dataBind
 
 class ArticlesAdapter : PagedListAdapter<Articles, ArticlesAdapter.ViewHolder>(Articles.DIFF_CALLBACK) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(parent.dataBind(R.layout.item_article))
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(getItem(position)!!)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent.dataBind(R.layout.item_article))
 
-    inner class ViewHolder(private val itemBinding:ItemArticleBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position)!!)
+
+    inner class ViewHolder(private val itemBinding:ItemArticleBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(item: Articles) {
             itemBinding.article = item

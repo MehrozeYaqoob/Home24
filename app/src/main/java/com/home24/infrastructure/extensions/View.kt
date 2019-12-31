@@ -36,7 +36,6 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
-//ahmed
 fun <T :ViewDataBinding> ViewGroup.dataBind(@LayoutRes layoutRes: Int)=
     DataBindingUtil.inflate<T>(LayoutInflater.from(context), layoutRes, this, false)!!
 

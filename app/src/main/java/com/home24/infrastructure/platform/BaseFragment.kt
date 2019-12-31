@@ -76,6 +76,7 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        arguments?.getInt("TotalArticles")
         ignite(savedInstanceState)
     }
 

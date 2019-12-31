@@ -26,17 +26,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass.
  */
-class StartFragment : BaseFragment() {
+class StartFragment : Fragment() {
 
 
-    //region Layouts
-    override val layoutResourceId = R.layout.fragment_start
-    //endregion
-
-    //endregion
-    //region Initializations
-    override fun ignite(bundle: Bundle?) {
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_start, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

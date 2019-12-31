@@ -31,15 +31,14 @@ class ArticleFragment : BaseFragment() {
     //region Initializations
     override fun ignite(bundle: Bundle?) {
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        divider.setDrawable(
-            ContextCompat.getDrawable(context!!, R.drawable.recycleview_gray_divider)!!
-        )
+        divider.setDrawable(ContextCompat.getDrawable(context!!, R.drawable.recycleview_gray_divider)!!)
         articlesRecyclerView.addItemDecoration(divider)
-//        artclesRecyclerView.suppressLayout(true)
+
         layoutManager = LayoutManager(context!!)
         articlesRecyclerView.layoutManager = layoutManager
         PagerSnapHelper().attachToRecyclerView(articlesRecyclerView)
         articlesRecyclerView.adapter = articlesAdapter
+
         productViewModel.run {
             observe(articlesList)
             {
@@ -54,12 +53,21 @@ class ArticleFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        arguments?.getInt("TotalArticles")
+
+        var counter = 0
+        btn_like.setOnClickListener {
+            layoutManager.canScroll = true
+            articlesRecyclerView.smoothScrollToPosition(++counter)
+        }
+
+        btn_dislike.setOnClickListener {
+            layoutManager.canScroll = true
+            articlesRecyclerView.smoothScrollToPosition(++counter)
+        }
     }
 }
 
-class LayoutManager(context: Context, val canScroll: Boolean = false) :
-    LinearLayoutManager(context, VERTICAL, false) {
+class LayoutManager(context: Context, var canScroll: Boolean = false) : LinearLayoutManager(context, VERTICAL, false) {
     override fun canScrollVertically(): Boolean {
         return canScroll
     }
