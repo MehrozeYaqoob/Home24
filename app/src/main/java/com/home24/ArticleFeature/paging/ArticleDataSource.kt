@@ -1,6 +1,5 @@
 package com.home24.ArticleFeature.paging
 
-import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.home24.ArticleFeature.repository.ArticleUseCase
 import com.home24.data.table.Articles
@@ -11,11 +10,7 @@ class ArticleDataSource(private val articleUseCase: ArticleUseCase) : PageKeyedD
 
     private var pageNumber = 1
 
-    override fun loadInitial(
-        params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, Articles>
-    ) {
-        Log.d("EmployeeDataSource", "LoadInitial")
+    override fun loadInitial(params: LoadInitialParams<Int>,callback: LoadInitialCallback<Int, Articles>) {
 
         articleUseCase.invoke(BaseUseCase.None()) {
             pageNumber++

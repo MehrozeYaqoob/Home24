@@ -8,6 +8,7 @@
     <string name="like">Like</string>
     <string name="dislike">Dislike</string>
     <string name="review">Review</string>
+    <string name="article_counter">%2$d / %2$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

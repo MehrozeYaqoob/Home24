@@ -16,6 +16,7 @@ class ArticleViewModel(androidApplication: Application, private val articleUseCa
     : BaseViewModel(androidApplication) {
 
     var articlesList: LiveData<PagedList<Articles>>
+    var likeArticleNumber : MutableLiveData<Int> = MutableLiveData()
 
     init {
         val pagedListConfig = PagedList.Config.Builder()
@@ -23,6 +24,8 @@ class ArticleViewModel(androidApplication: Application, private val articleUseCa
             .setPrefetchDistance(20)
             .setPageSize(10).build()
         articlesList = LivePagedListBuilder(articleSourceFactory, pagedListConfig).build()
+
+        likeArticleNumber.postValue(0)
     }
 
 }

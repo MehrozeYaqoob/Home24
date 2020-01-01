@@ -2,8 +2,8 @@ package com.home24.ArticleFeature.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -26,10 +26,15 @@ class ArticleFragment : BaseFragment() {
     private val productViewModel: ArticleViewModel by viewModel()
     private val articlesAdapter: ArticlesAdapter = ArticlesAdapter()
     private lateinit var layoutManager: LayoutManager
+    private var totalArticles : Int? = 0
     //endregion
 
     //region Initializations
     override fun ignite(bundle: Bundle?) {
+
+        bundle?.getInt("TotalArticles")?.let {  totalArticles = it}
+        tvArticleCounter.text = "${productViewModel.likeArticleNumber}/$totalArticles"
+
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         divider.setDrawable(ContextCompat.getDrawable(context!!, R.drawable.recycleview_gray_divider)!!)
         articlesRecyclerView.addItemDecoration(divider)
@@ -51,19 +56,28 @@ class ArticleFragment : BaseFragment() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun handleLikeDislike() {
         var counter = 0
         btn_like.setOnClickListener {
             layoutManager.canScroll = true
             articlesRecyclerView.smoothScrollToPosition(++counter)
+            productViewModel.likeArticleNumber.postValue(productViewModel.likeArticleNumber.value?.plus(1))
         }
 
         btn_dislike.setOnClickListener {
             layoutManager.canScroll = true
             articlesRecyclerView.smoothScrollToPosition(++counter)
         }
+    }
+
+    override fun observeLikedArticle() {
+        productViewModel.likeArticleNumber.observe(this, Observer { it ->
+            updateArticleCounter(it)
+        })
+    }
+
+    private fun updateArticleCounter(likedArticle : Int?){
+        tvArticleCounter.text = "$likedArticle/$totalArticles"
     }
 }
 

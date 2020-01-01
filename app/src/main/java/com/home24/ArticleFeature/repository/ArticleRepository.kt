@@ -6,6 +6,4 @@ class ArticleRepository(
     private val accountServices: ArticleServices
 ) : ArticleOperations {
     override fun fetchArticles() = accountServices.fetchArticles().requestBlocking()
-
-
 }
