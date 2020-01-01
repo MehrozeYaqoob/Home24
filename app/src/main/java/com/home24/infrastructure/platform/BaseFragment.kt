@@ -79,6 +79,7 @@ abstract class BaseFragment : Fragment(), BaseView {
         ignite(arguments)
         handleLikeDislike()
         observeLikedArticle()
+        observeReviewButton()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

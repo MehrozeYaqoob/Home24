@@ -7,4 +7,6 @@ interface BaseView {
     fun ignite(bundle:Bundle?)
     fun handleLikeDislike()
     fun observeLikedArticle()
+    fun observeReviewButton()
+
 }
