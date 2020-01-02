@@ -2,6 +2,7 @@ package com.home24.ArticleFeature.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -61,19 +62,20 @@ class ArticleFragment : BaseFragment() {
 
             articlesRecyclerView.smoothScrollToPosition(++counter)
             productViewModel.likeArticleNumber.postValue(productViewModel.likeArticleNumber.value?.plus(1))
-            productViewModel.articlesInterated.postValue(counter)
+            productViewModel.articlesInteracted.postValue(counter)
         }
 
         btn_dislike.setOnClickListener {
             layoutManager.canScroll = true
             articlesMapForReview[articlesAdapter.currentList?.get(counter)!!] = 0 // disliked article
             articlesRecyclerView.smoothScrollToPosition(++counter)
-            productViewModel.articlesInterated.postValue(counter)
+            productViewModel.articlesInteracted.postValue(counter)
 
         }
 
         btn_review.setOnClickListener {
             // TODO Jump to Review Fragment with Hashmap passed as argument
+            articlesMapForReview
         }
     }
 
@@ -84,9 +86,11 @@ class ArticleFragment : BaseFragment() {
     }
 
     override fun observeReviewButton() {
-        productViewModel.articlesInterated.observe(this, Observer { it ->
+        productViewModel.articlesInteracted.observe(this, Observer { it ->
             if(it == totalArticles){
                 btn_review.isEnabled = true
+                layoutManager.canScroll = false
+                layout_footer.visibility = View.GONE
             }
         })
     }

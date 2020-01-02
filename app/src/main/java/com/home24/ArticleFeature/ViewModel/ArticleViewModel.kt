@@ -17,7 +17,7 @@ class ArticleViewModel(androidApplication: Application, private val articleUseCa
 
     var articlesList: LiveData<PagedList<Articles>>
     var likeArticleNumber : MutableLiveData<Int> = MutableLiveData()
-    var articlesInterated : MutableLiveData<Int> = MutableLiveData()
+    var articlesInteracted : MutableLiveData<Int> = MutableLiveData()
 
     init {
         val pagedListConfig = PagedList.Config.Builder()
