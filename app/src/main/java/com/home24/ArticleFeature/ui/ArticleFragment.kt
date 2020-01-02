@@ -47,7 +47,7 @@ class ArticleFragment : BaseFragment() {
         articlesRecyclerView.adapter = articlesAdapter
 
         productViewModel.run {
-            totalArticles?.let { setTotalArticlesToLoad(it) }
+            totalArticles?.let { buildPageList(it) }
             observe(articlesList) { articlesAdapter.submitList(it) }
             fault(failure) { handleFailure(it) }
         }

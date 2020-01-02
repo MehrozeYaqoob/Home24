@@ -6,18 +6,14 @@ import com.home24.ArticleFeature.repository.ArticleUseCase
 import com.home24.data.table.Articles
 
 
-class ArticleSourceFactory(private val articleUseCase: ArticleUseCase) : DataSource.Factory<Int, Articles>() {
+class ArticleSourceFactory(private val articleUseCase: ArticleUseCase, private val totalArticlesToLoad: Int) : DataSource.Factory<Int, Articles>() {
 
     private lateinit var dataSourceClass: ArticleDataSource
     var dataSourceLiveData: MutableLiveData<ArticleDataSource> = MutableLiveData()
 
     override fun create(): DataSource<Int, Articles> {
-        dataSourceClass = ArticleDataSource(articleUseCase)
+        dataSourceClass = ArticleDataSource(articleUseCase, totalArticlesToLoad)
         dataSourceLiveData.postValue(dataSourceClass)
         return dataSourceClass
-    }
-
-    fun setTotalArticlesToLoad(totalArticlesToLoad : Int){
-        dataSourceClass.setTotalArticlesToLoad(totalArticlesToLoad)
     }
 }
