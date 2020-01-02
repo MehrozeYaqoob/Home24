@@ -12,7 +12,7 @@ import com.home24.data.table.Articles
 import com.home24.infrastructure.platform.BaseUseCase
 import com.home24.infrastructure.platform.BaseViewModel
 
-class ArticleViewModel(androidApplication: Application, private val articleUseCase: ArticleUseCase, articleSourceFactory: ArticleSourceFactory)
+class ArticleViewModel(androidApplication: Application, private val articleUseCase: ArticleUseCase,val articleSourceFactory: ArticleSourceFactory)
     : BaseViewModel(androidApplication) {
 
     var articlesList: LiveData<PagedList<Articles>>
@@ -29,4 +29,7 @@ class ArticleViewModel(androidApplication: Application, private val articleUseCa
         likeArticleNumber.postValue(0)
     }
 
+    fun setTotalArticlesToLoad(totalArticlesToLoad : Int){
+        articleSourceFactory.setTotalArticlesToLoad(totalArticlesToLoad)
+    }
 }

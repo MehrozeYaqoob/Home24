@@ -34,7 +34,7 @@ class ArticleFragment : BaseFragment() {
     //region Initializations
     override fun ignite(bundle: Bundle?) {
 
-        bundle?.getInt("TotalArticles")?.let {  totalArticles = it}
+        bundle?.getInt(getString(R.string.total_articles))?.let {  totalArticles = it }
 
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         divider.setDrawable(ContextCompat.getDrawable(context!!, R.drawable.recycleview_gray_divider)!!)
@@ -46,14 +46,9 @@ class ArticleFragment : BaseFragment() {
         articlesRecyclerView.adapter = articlesAdapter
 
         productViewModel.run {
-            observe(articlesList)
-            {
-                articlesAdapter.submitList(it)
-
-            }
-            fault(failure) {
-                handleFailure(it)
-            }
+            totalArticles?.let { setTotalArticlesToLoad(it) }
+            observe(articlesList) { articlesAdapter.submitList(it) }
+            fault(failure) { handleFailure(it) }
         }
     }
 
@@ -97,7 +92,7 @@ class ArticleFragment : BaseFragment() {
     }
 
     private fun updateArticleCounter(likedArticle : Int?){
-        tvArticleCounter.text = "$likedArticle/$totalArticles"
+        tvArticleCounter.text = getString(R.string.article_counter,likedArticle,totalArticles)
     }
 }
 

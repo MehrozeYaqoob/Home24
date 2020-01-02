@@ -46,7 +46,7 @@ class StartFragment : Fragment() {
             if( totalArticles < 1 || totalArticles > 100){
                 Toast.makeText(activity,R.string.invalid_article_count,Toast.LENGTH_LONG).show()
             }else{
-                val bundle = bundleOf("TotalArticles" to totalArticles)
+                val bundle = bundleOf(getString(R.string.total_articles) to totalArticles)
                 navController.navigate(R.id.action_startFragment_to_productListFragment,bundle)
             }
         }

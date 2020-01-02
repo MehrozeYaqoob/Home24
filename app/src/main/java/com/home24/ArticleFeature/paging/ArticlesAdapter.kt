@@ -14,11 +14,11 @@ class ArticlesAdapter : PagedListAdapter<Articles, ArticlesAdapter.ViewHolder>(A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent.dataBind(R.layout.item_article))
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position)!!)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position))
 
     inner class ViewHolder(private val itemBinding:ItemArticleBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun bind(item: Articles) {
+        fun bind(item: Articles?) {
             itemBinding.article = item
             itemBinding.executePendingBindings()
         }

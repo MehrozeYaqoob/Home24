@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 
 class ArticleUseCase(ioScope: CoroutineScope, private val articleRepository: ArticleRepository, main : CoroutineDispatcher):
     BaseUseCase<ArticleResponse, BaseUseCase.None>(ioScope, main) {
+
     override suspend fun run(param: None)=articleRepository.fetchArticles()
 
 }
