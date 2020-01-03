@@ -10,19 +10,20 @@ import com.home24.ArticleFeature.repository.ArticleUseCase
 import com.home24.data.table.Articles
 import com.home24.infrastructure.platform.BaseViewModel
 
-class ArticleViewModel(androidApplication: Application, private val articleUseCase: ArticleUseCase)
-    : BaseViewModel(androidApplication) {
+class ArticleViewModel(androidApplication: Application, private val articleUseCase: ArticleUseCase) : BaseViewModel(androidApplication) {
 
     lateinit var articlesList: LiveData<PagedList<Articles>>
-    var likeArticleNumber : MutableLiveData<Int> = MutableLiveData()
-    var articlesInteracted : MutableLiveData<Int> = MutableLiveData()
+    var likeArticleNumber: MutableLiveData<Int> = MutableLiveData()
+    var articlesInteracted: MutableLiveData<Int> = MutableLiveData()
+    val articlesMapForReview = mutableMapOf<Articles, Int>()
+    lateinit var articleSourceFactory: ArticleSourceFactory
 
     init {
         likeArticleNumber.postValue(0)
     }
 
-    fun buildPageList(totalArticlesToLoad : Int){
-        val articleSourceFactory = ArticleSourceFactory(articleUseCase, totalArticlesToLoad)
+    fun buildPageList(totalArticlesToLoad: Int) {
+        articleSourceFactory = ArticleSourceFactory(articleUseCase, totalArticlesToLoad)
 
         val pagedListConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
@@ -30,5 +31,10 @@ class ArticleViewModel(androidApplication: Application, private val articleUseCa
             .setPageSize(10).build()
         articlesList = LivePagedListBuilder(articleSourceFactory, pagedListConfig).build()
 
+    }
+
+    fun clearList() {
+        if (::articleSourceFactory.isInitialized)
+            articleSourceFactory.dataSourceLiveData.value?.invalidate()
     }
 }

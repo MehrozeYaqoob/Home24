@@ -1,15 +1,14 @@
 package com.home24.infrastructure.platform
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.*
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.home24.R
 import com.home24.infrastructure.exception.Failure
 import com.home24.infrastructure.extensions.invisible
@@ -18,8 +17,8 @@ import com.home24.infrastructure.extensions.visible
 
 abstract class BaseFragment : Fragment(), BaseView {
 
-
-    protected var binding: ViewDataBinding? = null
+    protected open var displayToolbar: Boolean = true
+    protected open var binding: ViewDataBinding? = null
     protected open var shouldBindData = false
 
     //endregion
@@ -70,6 +69,10 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (displayToolbar)
+            (activity as AppCompatActivity).supportActionBar?.show()
+        else
+            (activity as AppCompatActivity).supportActionBar?.hide()
         progressBar = activity?.findViewById(R.id.progressBar)
 
     }
@@ -105,6 +108,13 @@ abstract class BaseFragment : Fragment(), BaseView {
             is Failure.NetworkConnection -> showMessage(getString(R.string.failure_network_connection))
             is Failure.ServerError -> showMessage(getString(R.string.server_error))
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> findNavController().popBackStack()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     //endregion

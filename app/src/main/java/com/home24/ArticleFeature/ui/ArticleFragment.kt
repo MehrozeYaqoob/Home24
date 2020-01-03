@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -16,6 +17,7 @@ import com.home24.infrastructure.extensions.fault
 import com.home24.infrastructure.extensions.observe
 import com.home24.infrastructure.platform.BaseFragment
 import kotlinx.android.synthetic.main.fragment_article.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,11 +27,10 @@ class ArticleFragment : BaseFragment() {
     override val layoutResourceId = R.layout.fragment_article
     //endregion
     //region Injections
-    private val productViewModel: ArticleViewModel by viewModel()
+    private val productViewModel: ArticleViewModel by sharedViewModel()
     private val articlesAdapter: ArticlesAdapter = ArticlesAdapter()
     private lateinit var layoutManager: LayoutManager
     private var totalArticles : Int? = 0
-    private val articlesMapForReview = mutableMapOf<Articles,Int>()
     //endregion
 
     //region Initializations
@@ -58,7 +59,7 @@ class ArticleFragment : BaseFragment() {
 
         btn_like.setOnClickListener {
             layoutManager.canScroll = true
-            articlesMapForReview[articlesAdapter.currentList?.get(counter)!!] = 1 // liked article
+            productViewModel.articlesMapForReview[articlesAdapter.currentList?.get(counter)!!] = 1 // liked article
 
             articlesRecyclerView.smoothScrollToPosition(++counter)
             productViewModel.likeArticleNumber.postValue(productViewModel.likeArticleNumber.value?.plus(1))
@@ -67,15 +68,14 @@ class ArticleFragment : BaseFragment() {
 
         btn_dislike.setOnClickListener {
             layoutManager.canScroll = true
-            articlesMapForReview[articlesAdapter.currentList?.get(counter)!!] = 0 // disliked article
+            productViewModel.articlesMapForReview[articlesAdapter.currentList?.get(counter)!!] = 0 // disliked article
             articlesRecyclerView.smoothScrollToPosition(++counter)
             productViewModel.articlesInteracted.postValue(counter)
 
         }
 
         btn_review.setOnClickListener {
-            // TODO Jump to Review Fragment with Hashmap passed as argument
-            articlesMapForReview
+            findNavController().navigate(R.id.toReviewFragment)
         }
     }
 
