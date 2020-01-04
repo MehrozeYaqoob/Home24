@@ -134,7 +134,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.fragment:fragment-testing:'$androidxFragmentVersion"
 
-    testImplementation 'org.mockito:mockito-core:2.25.0'
     androidTestImplementation 'org.mockito:mockito-android:2.23.4'
 
     androidTestImplementation 'com.github.tmurakami:dexopener:2.0.4'

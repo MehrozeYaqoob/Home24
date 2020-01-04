@@ -42,7 +42,7 @@ class StartFragment : BaseFragment() {
                 Toast.makeText(activity,R.string.invalid_article_count,Toast.LENGTH_LONG).show()
             }else{
                 val bundle = bundleOf(getString(R.string.total_articles) to totalArticles)
-                navController.navigate(R.id.action_startFragment_to_productListFragment,bundle)
+                navController.navigate(R.id.toProductListFragment,bundle)
             }
         }
     }

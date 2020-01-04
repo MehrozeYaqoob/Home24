@@ -11,7 +11,7 @@
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_startFragment_to_productListFragment"
+            android:id="@+id/toProductListFragment"
             app:destination="@id/productListFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
