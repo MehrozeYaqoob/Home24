@@ -12,6 +12,7 @@ import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
 import org.koin.test.mock.declareMock
+import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Call
@@ -34,8 +35,8 @@ class ArticleRepositoryTest: AutoCloseKoinTest() {
         Mockito.`when`(retrofitResponse.isSuccessful).thenReturn(true)
         Mockito.`when`(retrofitResponse.body()).thenReturn(responseBody)
 
-        Mockito.`when`(articleServices.fetchArticles()).thenReturn(serviceCall)
-        val response = serviceRepository.fetchArticles()
+        Mockito.`when`(articleServices.fetchArticles(anyInt())).thenReturn(serviceCall)
+        val response = serviceRepository.fetchArticles(anyInt())
         assertTrue(response is Either.Right<*>)
     }
 
@@ -49,8 +50,8 @@ class ArticleRepositoryTest: AutoCloseKoinTest() {
         Mockito.`when`(serviceCall.execute()).thenReturn(retrofitResponse)
         Mockito.`when`(retrofitResponse.isSuccessful).thenReturn(false)
 
-        Mockito.`when`(articleServices.fetchArticles()).thenReturn(serviceCall)
-        val response = serviceRepository.fetchArticles()
+        Mockito.`when`(articleServices.fetchArticles(anyInt())).thenReturn(serviceCall)
+        val response = serviceRepository.fetchArticles(anyInt())
         assertTrue(response is Either.Left<*>)
     }
 

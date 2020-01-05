@@ -3,27 +3,15 @@ package com.home24.ArticleFeature.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.home24.ArticleFeature.ViewModel.ArticleViewModel
-import com.home24.ArticleFeature.paging.ArticlesAdapter
 
 import com.home24.R
-import com.home24.infrastructure.extensions.fault
-import com.home24.infrastructure.extensions.observe
 import com.home24.infrastructure.platform.BaseFragment
 import kotlinx.android.synthetic.main.fragment_start.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.

@@ -139,7 +139,5 @@ dependencies {
     androidTestImplementation 'com.github.tmurakami:dexopener:2.0.4'
     androidTestImplementation 'androidx.test:runner:1.2.0'
 
-    implementation 'androidx.paging:paging-runtime-ktx:2.1.1'
-
 
 }

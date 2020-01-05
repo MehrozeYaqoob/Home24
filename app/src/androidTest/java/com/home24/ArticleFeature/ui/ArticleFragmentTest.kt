@@ -13,6 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.home24.ArticleFeature.ViewModel.ArticleViewModel
 import com.home24.ArticleFeature.repository.ArticleUseCase
 import com.home24.R
+import com.home24.data.table.*
 import com.home24.matcher.RecyclerViewMatcher
 import org.hamcrest.CoreMatchers.not
 import org.hamcrest.core.StringContains.containsString
@@ -50,7 +51,7 @@ open class ArticleFragmentTest: KoinTest {
     }
 
     @Test
-    fun launchFragmentAndVerifyDataPopulation() {
+    fun launchFragmentAndVerifyArticleCounter() {
 
         val scenario = launchFragmentInContainer<ArticleFragment>(themeResId = R.style.AppTheme)
         scenario.onFragment {
@@ -59,6 +60,24 @@ open class ArticleFragmentTest: KoinTest {
         }
 
         onView(withId(R.id.tvArticleCounter)).check(matches(withText(containsString(articleViewModel.likeArticleNumber.value?.toString()))))
+    }
+
+    @Test
+    fun launchFragmentAndVerifyDataPopulation() {
+
+        val scenario = launchFragmentInContainer<ArticleFragment>(themeResId = R.style.AppTheme)
+        scenario.onFragment {
+
+            articleViewModel.articlesList.postValue(listOf<Articles>(Articles(1,"Premium Komfortmatratze Smood", "",Price(0.00,"",false),"",Price(0.00,"",false),
+                Delivery(Time("",0,""),"","","","","", emptyList()),
+                Brand("","", emptyList(),""), emptyList(),"","","","",0,Reviews(0,0),false, emptyList(), emptyList<Showrooms>(),
+                Metadata(""),Links("", Self(""))
+            )))
+        }
+
+        Espresso.onView(RecyclerViewMatcher(R.id.articlesRecyclerView).atPosition(0))
+            .check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText("Premium Komfortmatratze Smood"))))
+
     }
 
     @After

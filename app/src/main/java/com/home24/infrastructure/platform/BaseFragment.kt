@@ -85,10 +85,6 @@ abstract class BaseFragment : Fragment(), BaseView {
         observeReviewButton()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
 
     override fun onDestroyView() {
         showProgress(false, false)

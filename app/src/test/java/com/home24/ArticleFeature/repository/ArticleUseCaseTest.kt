@@ -11,6 +11,8 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers
+import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
@@ -30,11 +32,11 @@ class ArticleUseCaseTest{
         val result: Either.Right<ArticleResponse> = mock()
         Mockito.`when`(result.b).thenReturn(articleResponse)
 
-        Mockito.`when`(articleRepository.fetchArticles()).thenReturn(result)
+        Mockito.`when`(articleRepository.fetchArticles(anyInt())).thenReturn(result)
         val articleUseCase = ArticleUseCase(CoroutineScope(Dispatchers.Unconfined + Job()), articleRepository, Dispatchers.Unconfined)
-        Mockito.`when`(articleUseCase.run(none)).thenReturn(result)
+        Mockito.`when`(articleUseCase.run(none, anyInt())).thenReturn(result)
 
-        articleUseCase.invoke(none){
+        articleUseCase.invoke(none, anyInt()){
             assertEquals(it, result)
             assertNotNull(result.b)
         }
@@ -47,11 +49,11 @@ class ArticleUseCaseTest{
         val result: Either.Left<Failure> = mock()
         Mockito.`when`(result.a).thenReturn(failure)
 
-        Mockito.`when`(articleRepository.fetchArticles()).thenReturn(result)
+        Mockito.`when`(articleRepository.fetchArticles(anyInt())).thenReturn(result)
         val articleUseCase = ArticleUseCase(CoroutineScope(Dispatchers.Unconfined + Job()), articleRepository, Dispatchers.Unconfined)
-        Mockito.`when`(articleUseCase.run(none)).thenReturn(result)
+        Mockito.`when`(articleUseCase.run(none,anyInt())).thenReturn(result)
 
-        articleUseCase.invoke(none){
+        articleUseCase.invoke(none,anyInt()){
             assertEquals(it, result)
             assertNotNull(result.a)
         }
