@@ -26,22 +26,14 @@ abstract class BaseFragment : Fragment(), BaseView {
     protected fun showProgress(showProgress: Boolean, lockScreen: Boolean) {
         if (showProgress) {
             progressBar?.visible()
-
-
         } else {
             progressBar?.invisible()
-
         }
 
         if (lockScreen) {
-            activity?.window?.setFlags(
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-            )
+            activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         } else {
-            activity?.window?.clearFlags(
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-            )
+            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         }
     }
 
@@ -80,14 +72,11 @@ abstract class BaseFragment : Fragment(), BaseView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         ignite(arguments)
-        handleLikeDislike()
-        observeLikedArticle()
-        observeReviewButton()
     }
 
 
     override fun onDestroyView() {
-        showProgress(false, false)
+//        showProgress(false, false)
         super.onDestroyView()
     }
 

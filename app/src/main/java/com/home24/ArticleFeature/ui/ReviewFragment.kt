@@ -1,4 +1,4 @@
-package com.home24.ArticleFeature.ui
+package com.home24.articlefeature.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.home24.ArticleFeature.ViewModel.ArticleViewModel
-import com.home24.ArticleFeature.adapter.ReviewArticleAdapter
+import com.home24.articlefeature.viewmodel.ArticleViewModel
+import com.home24.articlefeature.adapter.ReviewArticleAdapter
 import com.home24.R
 import com.home24.infrastructure.platform.BaseFragment
 import kotlinx.android.synthetic.main.fragment_review.*
@@ -30,6 +30,10 @@ class ReviewFragment : BaseFragment() {
     //endregion
 
     //region Initializations
+    /**
+     * This will populate UI with data shown on previous screen
+     * @param bundle Bundle?
+     */
     override fun ignite(bundle: Bundle?) {
         setHasOptionsMenu(true)
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -47,22 +51,11 @@ class ReviewFragment : BaseFragment() {
         articlesRecyclerView.layoutManager = gridLayoutManager
         PagerSnapHelper().attachToRecyclerView(articlesRecyclerView)
         articlesRecyclerView.adapter = articlesAdapter
-        articlesAdapter.submitList(productViewModel.articlesMapForReview.keys.toList())
+        articlesAdapter.submitList(productViewModel.articlesList.value)
     }
+    //endregion
 
-    override fun handleLikeDislike() {
-
-    }
-
-    override fun observeLikedArticle() {
-
-    }
-
-    override fun observeReviewButton() {
-
-
-    }
-
+    //region overriden methods
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.review_article_menu, menu)
         return super.onCreateOptionsMenu(menu, inflater)
@@ -76,6 +69,7 @@ class ReviewFragment : BaseFragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+    //endregion
 }
 
 

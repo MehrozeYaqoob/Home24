@@ -1,4 +1,4 @@
-package com.home24.ArticleFeature.repository
+package com.home24.articlefeature.repository
 
 import com.home24.data.table.ArticleResponse
 import com.home24.infrastructure.exception.Failure

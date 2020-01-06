@@ -1,4 +1,4 @@
-package com.home24.ArticleFeature.ui
+package com.home24.articlefeature.ui
 
 import android.app.Application
 import androidx.fragment.app.testing.launchFragmentInContainer
@@ -10,17 +10,15 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.home24.ArticleFeature.ViewModel.ArticleViewModel
-import com.home24.ArticleFeature.repository.ArticleUseCase
+import com.home24.articlefeature.viewmodel.ArticleViewModel
+import com.home24.articlefeature.repository.ArticleUseCase
 import com.home24.R
 import com.home24.data.table.*
 import com.home24.matcher.RecyclerViewMatcher
-import org.hamcrest.CoreMatchers.not
 import org.hamcrest.core.StringContains.containsString
 import org.junit.After
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.androidx.viewmodel.dsl.viewModel

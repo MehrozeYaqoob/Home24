@@ -1,10 +1,10 @@
-package com.home24.ArticleFeature.ViewModel
+package com.home24.articlefeature.viewmodel
 
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.home24.ArticleFeature.repository.ArticleRepository
-import com.home24.ArticleFeature.repository.ArticleUseCase
+import com.home24.articlefeature.repository.ArticleRepository
+import com.home24.articlefeature.repository.ArticleUseCase
 import com.home24.data.table.ArticleResponse
 import com.home24.data.table.Articles
 import com.home24.data.table.Embedded

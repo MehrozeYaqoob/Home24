@@ -1,7 +1,7 @@
-package com.home24.ArticleFeature.repository
+package com.home24.articlefeature.repository
 
 import com.home24.data.table.ArticleResponse
-import com.home24.di.ArticleFeature.articleRepositoryModule
+import com.home24.di.articlefeature.articleRepositoryModule
 import com.home24.infrastructure.functional.Either
 import com.home24.infrastructure.networks.networkModule
 import org.junit.Assert.*

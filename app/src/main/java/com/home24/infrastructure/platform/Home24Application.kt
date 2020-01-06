@@ -1,9 +1,9 @@
 package com.home24.infrastructure.platform
 import androidx.multidex.MultiDexApplication
 import com.home24.BuildConfig
-import com.home24.di.ArticleFeature.articleRepositoryModule
-import com.home24.di.ArticleFeature.articleUseCaseModule
-import com.home24.di.ArticleFeature.articleViewModelModule
+import com.home24.di.articlefeature.articleRepositoryModule
+import com.home24.di.articlefeature.articleUseCaseModule
+import com.home24.di.articlefeature.articleViewModelModule
 //import com.home24.di.ArticleFeature.getProductRepositoryModule
 //import com.home24.di.ArticleFeature.getProductUseCaseModule
 //import com.home24.di.ArticleFeature.getProductViewModelModule

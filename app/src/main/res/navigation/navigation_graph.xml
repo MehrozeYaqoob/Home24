@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.home24.ArticleFeature.ui.StartFragment"
+        android:name="com.home24.articlefeature.ui.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -15,6 +15,7 @@
             app:destination="@id/productListFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
@@ -22,7 +23,7 @@
 
     <fragment
         android:id="@+id/productListFragment"
-        android:name="com.home24.ArticleFeature.ui.ArticleFragment"
+        android:name="com.home24.articlefeature.ui.ArticleFragment"
         android:label="fragment_article"
         tools:layout="@layout/fragment_article">
 
@@ -40,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/reviewFragment"
-        android:name="com.home24.ArticleFeature.ui.ReviewFragment"
+        android:name="com.home24.articlefeature.ui.ReviewFragment"
         android:label="ReviewFragment"
         tools:layout="@layout/fragment_review"/>
 

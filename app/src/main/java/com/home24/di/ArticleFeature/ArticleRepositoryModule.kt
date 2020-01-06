@@ -1,7 +1,7 @@
-package com.home24.di.ArticleFeature
+package com.home24.di.articlefeature
 
-import com.home24.ArticleFeature.repository.ArticleRepository
-import com.home24.ArticleFeature.repository.ArticleServices
+import com.home24.articlefeature.repository.ArticleRepository
+import com.home24.articlefeature.repository.ArticleServices
 import org.koin.dsl.module
 import retrofit2.Retrofit
 

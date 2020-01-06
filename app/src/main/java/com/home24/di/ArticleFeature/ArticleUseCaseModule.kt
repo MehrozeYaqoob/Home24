@@ -1,6 +1,6 @@
-package com.home24.di.ArticleFeature
+package com.home24.di.articlefeature
 
-import com.home24.ArticleFeature.repository.ArticleUseCase
+import com.home24.articlefeature.repository.ArticleUseCase
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 

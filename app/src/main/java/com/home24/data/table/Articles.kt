@@ -26,7 +26,8 @@ data class Articles (
 	@SerializedName("labels") val labels : List<Label>,
 	@SerializedName("showrooms") val showrooms : List<Showrooms>,
 	@SerializedName("_metadata") val Metadata : Metadata,
-	@SerializedName("_links") val Links : Links
+	@SerializedName("_links") val Links : Links,
+	@Transient var isLiked : Boolean = false
 ){
 	companion object {
 		val DIFF_CALLBACK: DiffUtil.ItemCallback<Articles> =

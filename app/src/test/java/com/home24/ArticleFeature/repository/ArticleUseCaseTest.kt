@@ -1,4 +1,4 @@
-package com.home24.ArticleFeature.repository
+package com.home24.articlefeature.repository
 
 import com.home24.data.table.ArticleResponse
 import com.home24.infrastructure.exception.Failure
@@ -11,7 +11,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers
 import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mock
 import org.mockito.Mockito
