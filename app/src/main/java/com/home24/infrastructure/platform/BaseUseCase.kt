@@ -1,6 +1,5 @@
 package com.home24.infrastructure.platform
 
-import com.home24.data.table.Articles
 import com.home24.infrastructure.exception.Failure
 import com.home24.infrastructure.functional.Either
 import kotlinx.coroutines.*

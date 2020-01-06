@@ -73,8 +73,8 @@ open class ArticleFragmentTest: KoinTest {
             )))
         }
 
-        Espresso.onView(RecyclerViewMatcher(R.id.articlesRecyclerView).atPosition(0))
-            .check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText("Premium Komfortmatratze Smood"))))
+        onView(RecyclerViewMatcher(R.id.articlesRecyclerView).atPosition(0))
+            .check(matches(ViewMatchers.hasDescendant(withText("Premium Komfortmatratze Smood"))))
 
     }
 

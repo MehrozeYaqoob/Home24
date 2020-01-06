@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.home24.articlefeature.viewmodel.ArticleViewModel
-import com.home24.articlefeature.adapter.ReviewArticleAdapter
 import com.home24.R
+import com.home24.articlefeature.adapter.ReviewArticleAdapter
+import com.home24.articlefeature.viewmodel.ArticleViewModel
 import com.home24.infrastructure.platform.BaseFragment
 import kotlinx.android.synthetic.main.fragment_review.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

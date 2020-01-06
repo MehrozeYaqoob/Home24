@@ -1,7 +1,5 @@
 package com.home24.infrastructure.networks
 
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
 import com.home24.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

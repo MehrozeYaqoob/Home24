@@ -9,9 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.home24.articlefeature.viewmodel.ArticleViewModel
-import com.home24.articlefeature.adapter.ArticlesAdapter
 import com.home24.R
+import com.home24.articlefeature.adapter.ArticlesAdapter
+import com.home24.articlefeature.viewmodel.ArticleViewModel
 import com.home24.infrastructure.extensions.fault
 import com.home24.infrastructure.extensions.observe
 import com.home24.infrastructure.platform.ArticleFragmentContracts
